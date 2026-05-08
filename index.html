@@ -1,10 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Engineering Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fyn Taylor | Project Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #cbd5e1;
+      font-size: 1.1rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .project-card {
+      background-color: #1e293b;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-info {
+      padding: 18px;
+    }
+
+    .project-info h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .project-info p {
+      color: #cbd5e1;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hi, I'm Fyn</h1>
-  <p>Electronics and embedded systems projects.</p>
+
+  <header>
+    <h1>Fyn Taylor</h1>
+    <p>Electrical Engineering Undegraduate</p>
+  </header>
+
+  <section class="projects">
+
+    <a class="project-card" href="projects/climate-control.html">
+      <img src="images/climate-control.png" alt="Climate Control System">
+      <div class="project-info">
+        <h2>CAN Tranciever PCB</h2>
+        <p>Smart occupancy and environmental monitoring system using Raspberry Pi Pico W.</p>
+      </div>
+    </a>
+
+    <a class="project-card" href="projects/can-bus-node.html">
+      <img src="images/can-bus.png" alt="CAN Bus Node">
+      <div class="project-info">
+        <h2>Digital Potentiometer PCB</h2>
+        <p>Robust underwater CAN communication node with noise protection and split termination.</p>
+      </div>
+    </a>
+
+    <a class="project-card" href="projects/joystick-interface.html">
+      <img src="images/joystick.png" alt="Joystick Interface">
+      <div class="project-info">
+        <h2>Sonar System Reverse-Engineering</h2>
+        <p>Arduino-based joystick and analog control experimentation platform.</p>
+      </div>
+    </a>
+
+    <a class="project-card" href="projects/pcb-design.html">
+      <img src="images/pcb-design.png" alt="PCB Design Workflow">
+      <div class="project-info">
+        <h2>Picnic Table Motor Boat</h2>
+        <p>Complete PCB workflow from schematic capture through manufacturing preparation.</p>
+      </div>
+    </a>
+
+    <a class="project-card" href="projects/security-system.html">
+      <img src="images/security-system.png" alt="Security System">
+      <div class="project-info">
+        <h2>Cabin</h2>
+        <p>Sensor-based security and monitoring project with real-time serial visualization.</p>
+      </div>
+    </a>
+    
+  </section>
+
+  <footer>
+    © 2026 Fyn Taylor | Project Portfolio
+  </footer>
+
 </body>
 </html>
