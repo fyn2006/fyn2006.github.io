@@ -86,24 +86,110 @@
       color: #94a3b8;
       font-size: 0.9rem;
     }
+    .tooltip {
+  position: relative;
+  display: inline-block;
+  color: #60a5fa;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 4px;
+}
+
+.tooltip-content {
+  visibility: hidden;
+  opacity: 0;
+  width: 260px;
+
+  background-color: #0f172a;
+  color: white;
+
+  text-align: left;
+  border-radius: 14px;
+  padding: 12px;
+
+  position: absolute;
+  z-index: 100;
+
+  bottom: 140%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  transition: opacity 0.25s ease;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  border: 1px solid #334155;
+}
+
+.tooltip-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.tooltip-content strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+.tooltip-content p {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.tooltip:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}
   </style>
 </head>
 <body>
 
   <header>
     <h1>Fyn Taylor</h1>
-    <p>Electrical Engineering Undegraduate</p>
+    <p>Electrical Engineering Undegraduate Portfolio</p>
   </header>
 
   <section class="projects">
 
-    <a class="project-card" href="projects/climate-control.html">
-      <img src="images/climate-control.png" alt="Climate Control System">
-      <div class="project-info">
-        <h2>CAN Tranciever PCB</h2>
-        <p>Smart occupancy and environmental monitoring system using Raspberry Pi Pico W.</p>
-      </div>
-    </a>
+    <a class="project-card" href="projects/can-transceiver.html">
+  <img src="images/can-bus.png" alt="CAN Transceiver PCB">
+
+  <div class="project-info">
+    <h2>CAN Transceiver PCB</h2>
+
+    <p>
+      Designed, prototyped, and manufactured (with the help of PCBWay)
+      a CAN bus transceiver PCB for use in
+
+      <span class="tooltip">
+        AUVIC
+        <span class="tooltip-content">
+          <img src="images/auvic.png" alt="AUVIC">
+          <strong>AUVIC</strong>
+          <p>
+            The University of Victoria's autonomous underwater vehicle design team,
+            focused on robotics, embedded systems, and underwater engineering.
+          </p>
+        </span>
+      </span>
+
+      <span class="tooltip">
+        submersible
+        <span class="tooltip-content">
+          <img src="images/submersible.png" alt="Submersible">
+          <strong>Autonomous Submersible</strong>
+          <p>
+            An underwater robotic platform designed for autonomous navigation,
+            sensing, and communication in marine environments.
+          </p>
+        </span>
+      </span>.
+    </p>
+
+  </div>
+</a>
 
     <a class="project-card" href="projects/can-bus-node.html">
       <img src="images/can-bus.png" alt="CAN Bus Node">
