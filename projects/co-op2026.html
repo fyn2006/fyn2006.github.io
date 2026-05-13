@@ -1,1 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geotechnical Engineering Research Co-op | Fyn Taylor</title>
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.18), transparent 35%),
+        linear-gradient(135deg, #020617, #0f172a 45%, #111827);
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 36px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      color: #93c5fd;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .back-link:hover {
+      color: #bfdbfe;
+      transform: translateX(-4px);
+    }
+
+    header {
+      padding: 56px 0 64px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+      margin-bottom: 64px;
+    }
+
+    .hero-card {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 28px;
+      padding: 42px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(14px);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+      background: linear-gradient(90deg, #ffffff, #93c5fd, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .project-body {
+      max-width: 860px;
+      line-height: 1.5;
+      color: #cbd5e1;
+      font-size: 1.05rem;
+    }
+
+    .project-body p {
+      margin-bottom: 18px;
+    }
+
+    .project-list {
+      margin-top: 26px;
+      margin-left: 4rem;
+      line-height: 2;
+      color: #e2e8f0;
+    }
+
+    .project-list li {
+      padding-left: 10px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.18);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      color: #bfdbfe;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 42px;
+      align-items: center;
+      margin-bottom: 86px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .section:nth-child(even) {
+      direction: rtl;
+    }
+
+    .section:nth-child(even) .text,
+    .section:nth-child(even) .image-block {
+      direction: ltr;
+    }
+
+    .text {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .text:hover {
+      transform: translateY(-6px);
+      border-color: rgba(96, 165, 250, 0.55);
+    }
+
+    .text h2 {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      color: #f8fafc;
+    }
+
+    .text p {
+      color: #cbd5e1;
+      margin-bottom: 14px;
+    }
+
+    .image-block {
+      position: relative;
+      background: rgba(30, 41, 59, 0.75);
+      border-radius: 24px;
+      padding: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.32);
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .image-block::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.45), transparent 45%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .image-block:hover {
+      transform: scale(1.025);
+      box-shadow: 0 24px 70px rgba(37, 99, 235, 0.22);
+    }
+
+    .image-block:hover::before {
+      opacity: 1;
+    }
+
+    .image-block img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+      background-color: #020617;
+      transition: transform 0.35s ease;
+    }
+
+    .image-block img + .caption + img {
+      margin-top: 18px;
+    }
+
+    .image-block:hover img {
+      transform: scale(1.03);
+    }
+
+    .caption {
+      position: relative;
+      z-index: 1;
+      color: #94a3b8;
+      font-size: 0.86rem;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 28px 0 10px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 850px) {
+      .container {
+        padding: 28px 18px;
+      }
+
+      .hero-card {
+        padding: 30px;
+      }
+
+      .project-list {
+        margin-left: 2rem;
+      }
+
+      .section,
+      .section:nth-child(even) {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+
+      .image-block img {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <a class="back-link" href="../index.html">← Back to Portfolio</a>
+
+    <header>
+      <div class="hero-card">
+        <h1>Geotechnical Engineering Research Co-op</h1>
+
+        <div class="project-body">
+          <p>
+            A research assistant co-op being completed within the University of Victoria
+            geotechnical engineering laboratory focused on investigating how
+            freeze-thaw cycling affects the structural integrity of aggregate and
+            subgrade soils used in transportation infrastructure.
+          </p>
+
+          <p>
+            This involves assisting graduate students with research tasks,
+            including preparing, testing, and analyzing soil samples under
+            controlled environmental conditions using both small-scale and
+            large-scale testing methods.
+          </p>
+
+          <p>
+            This research will then be used to write a paper to be submitted to a
+            geotechnical engineering conference.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="text">
+        <span class="timeline-label">TESTING PROCESS</span>
+
+        <h2>Testing Process</h2>
+
+        <p>
+          Both the large-scale and small-scale test boxes follow generally the
+          same testing procedure with slight alterations. The general process is:
+        </p>
+
+        <ol class="project-list">
+          <li>Measure and mix the subgrade and aggregate soils</li>
+          <li>Fill the test box and compact each layer to its specified height, placing sensors every few layers</li>
+          <li>Run the soil structure through freeze-thaw cycles</li>
+          <li>Perform structural analysis tests on the soil structure</li>
+          <li>Remove the top layer and analyze deformation of the subgrade</li>
+          <li>Remove damaged subgrade and rebuild the structure to repeat the test under different conditions</li>
+        </ol>
+      </div>
+
+      <div class="image-block">
+        <img src="../images/geotech-process.png" alt="Geotechnical freeze thaw testing process">
+
+        <div class="caption">
+          Figure 1 — Freeze-thaw testing process
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="text">
+        <span class="timeline-label">LARGE BOX TESTING</span>
+
+        <h2>Large-Scale Test Box</h2>
+
+        <p>
+          The large-scale test box was used to model roadway material behavior at
+          a larger physical scale.
+        </p>
+
+        <p>
+          Sensors were placed throughout the structure during construction so
+          changes in the soil temperature, moisture content, pressure and surface structure could be monitored throughout the test .
+        </p>
+
+       
+      </div>
+
+      <div class="image-block">
+        <img src="../images/geotech-large-box-1.png" alt="Large-scale geotechnical test box">
+
+        <div class="caption">
+          Figure 2 — Large-scale aggregate and subgrade test box
+        </div>
+
+        <img src="../images/geotech-large-box-2.png" alt="Large-scale freeze thaw testing setup">
+
+        <div class="caption">
+          Figure 3 — Large-scale freeze-thaw testing setup
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="text">
+        <span class="timeline-label">SMALL BOX TESTING</span>
+
+        <h2>Small-Scale Test Box</h2>
+
+        <p>
+          The small-scale test box was used to perform controlled and repeatable
+          freeze-thaw experiments with a smaller amount of material and faster
+          sample preparation.
+        </p>
+
+        <p>
+          The smaller box allows multiple material configurations to be tested
+          efficiently while maintaining consistent compaction, moisture content,
+          and environmental exposure conditions between experiments.
+        </p>
+      </div>
+
+      <div class="image-block">
+        <img src="../images/geotech-small-box.png" alt="Small-scale geotechnical test box">
+
+        <div class="caption">
+          Figure 4 — Small-scale aggregate and subgrade test box
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Fyn Taylor | University of Victoria Research Co-op
+    </footer>
+
+  </main>
+
+</body>
+</html>
