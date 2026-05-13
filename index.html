@@ -45,83 +45,175 @@
       font-size: 1.1rem;
     }
 
-    /* =========================
-       PROJECT GRID LAYOUT
-    ========================== */
+   /* =========================
+   PROJECT GRID LAYOUT
+========================== */
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      padding: 40px;
-      max-width: 1300px;
-      margin: auto;
-    }
+.projects {
+  display: grid;
 
-    /* =========================
-       PROJECT CARD
-    ========================== */
+  /* Better responsive sizing */
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
 
-    .project-card {
-      position: relative;
-      overflow: visible;
-      background-color: #1e293b;
-      border-radius: 18px;
-      color: white;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
+  gap: 34px;
 
-    .project-card:hover {
-      z-index: 1;
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
-    }
+  padding: 50px 40px 70px;
 
-    .project-card > img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-    }
+  max-width: 1450px;
 
-    .project-info {
-      padding: 18px;
-    }
+  margin: auto;
 
-    .project-info h2 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
+  align-items: stretch;
+}
 
-    .project-info p {
-      color: #cbd5e1;
-      line-height: 1.5;
-      font-size: 0.95rem;
-    }
+/* =========================
+   PROJECT CARD
+========================== */
 
-    /* =========================
-       PROJECT BUTTON
-    ========================== */
+.project-card {
+  position: relative;
 
-    .project-button {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 10px 16px;
-      background-color: #2563eb;
-      color: white;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.2s ease;
-    }
+  display: flex;
+  flex-direction: column;
 
-    .project-button:hover {
-      background-color: #1d4ed8;
-    }
+  overflow: hidden;
 
+  background: rgba(30, 41, 59, 0.92);
+
+  border: 1px solid rgba(148, 163, 184, 0.18);
+
+  border-radius: 24px;
+
+  color: white;
+
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+/* Hover effect */
+
+.project-card:hover {
+  transform: translateY(-10px);
+
+  border-color: rgba(96, 165, 250, 0.45);
+
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* Project images */
+
+.project-card > img {
+  width: 100%;
+
+  height: 210px;
+
+  object-fit: cover;
+
+  display: block;
+
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+
+  transition: transform 0.35s ease;
+}
+
+.project-card:hover > img {
+  transform: scale(1.03);
+}
+
+/* Content area */
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+
+  padding: 24px;
+}
+
+/* Titles */
+
+.project-info h2 {
+  font-size: 1.4rem;
+
+  margin-bottom: 12px;
+
+  line-height: 1.2;
+}
+
+/* Description text */
+
+.project-info p {
+  color: #cbd5e1;
+
+  line-height: 1.6;
+
+  font-size: 0.96rem;
+
+  flex-grow: 1;
+}
+
+/* =========================
+   PROJECT BUTTON
+========================== */
+
+.project-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 22px;
+
+  padding: 11px 18px;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+}
+
+.project-button:hover {
+  background-color: #1d4ed8;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.42);
+}
+
+/* =========================
+   RESPONSIVE TUNING
+========================== */
+
+@media (max-width: 900px) {
+
+  .projects {
+    grid-template-columns: 1fr;
+
+    padding: 35px 20px 55px;
+  }
+
+  .project-card > img {
+    height: 220px;
+  }
+}
     /* =========================
        TOOLTIP LINK STYLE
     ========================== */
