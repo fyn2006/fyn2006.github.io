@@ -1,215 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
+  <title>Fyn Taylor | Project Portfolio</title>
 
-  body {
-    background-color: #0f172a;
-    color: white;
-    min-height: 100vh;
-  }
-
-  header {
-    text-align: center;
-    padding: 70px 20px 35px;
-  }
-
-  header h1 {
-    font-size: 3.6rem;
-    margin-bottom: 12px;
-    letter-spacing: -1px;
-  }
-
-  header p {
-    color: #cbd5e1;
-    font-size: 1.15rem;
-  }
-
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 32px;
-    max-width: 1350px;
-    margin: auto;
-    padding: 45px 40px 70px;
-    overflow: visible;
-  }
-
-  .project-card {
-    grid-column: span 2;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    overflow: visible;
-    background-color: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 22px;
-    color: white;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  .project-card:nth-child(4) {
-    grid-column: 2 / span 2;
-  }
-
-  .project-card:nth-child(5) {
-    grid-column: 4 / span 2;
-  }
-
-  .project-card:hover {
-    z-index: 1000;
-    transform: translateY(-8px);
-    border-color: #60a5fa;
-    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.4);
-  }
-
-  .project-card > img {
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-    display: block;
-    border-top-left-radius: 22px;
-    border-top-right-radius: 22px;
-  }
-
-  .project-info {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 24px;
-  }
-
-  .project-info h2 {
-    font-size: 1.35rem;
-    margin-bottom: 12px;
-    line-height: 1.25;
-  }
-
-  .project-info p {
-    color: #cbd5e1;
-    line-height: 1.55;
-    font-size: 0.96rem;
-    flex-grow: 1;
-  }
-
-  .project-button {
-    display: inline-block;
-    width: fit-content;
-    margin-top: 20px;
-    padding: 11px 18px;
-    background-color: #2563eb;
-    color: white;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .project-button:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-2px);
-  }
-
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    color: #60a5fa;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 0 4px;
-    z-index: 2000;
-  }
-
-  .tooltip-content {
-    visibility: hidden;
-    opacity: 0;
-    width: 260px;
-    background-color: #0f172a;
-    color: white;
-    border-radius: 14px;
-    padding: 12px;
-    text-align: left;
-    position: absolute;
-    z-index: 999999;
-    bottom: 140%;
-    left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.55);
-    border: 1px solid #334155;
-    pointer-events: none;
-  }
-
-  .tooltip-content img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    display: block;
-  }
-
-  .tooltip-content strong {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 1rem;
-    color: white;
-  }
-
-  .tooltip-text {
-    font-size: 0.85rem;
-    color: #cbd5e1;
-    line-height: 1.4;
-    font-weight: normal;
-  }
-
-  .tooltip:hover {
-    z-index: 999999;
-  }
-
-  .tooltip:hover .tooltip-content {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  footer {
-    text-align: center;
-    padding: 32px;
-    color: #94a3b8;
-    font-size: 0.9rem;
-    border-top: 1px solid #334155;
-  }
-
-  @media (max-width: 1050px) {
-    .projects {
-      grid-template-columns: repeat(2, 1fr);
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
-    .project-card,
-    .project-card:nth-child(4),
-    .project-card:nth-child(5) {
-      grid-column: auto;
+    html {
+      scroll-behavior: smooth;
     }
-  }
 
-  @media (max-width: 700px) {
+    body {
+      background-color: #0f172a;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
     header h1 {
-      font-size: 2.7rem;
+      font-size: 4rem;
+      margin-bottom: 14px;
+      letter-spacing: -2px;
+    }
+
+    header p {
+      color: #cbd5e1;
+      font-size: 1.15rem;
     }
 
     .projects {
-      grid-template-columns: 1fr;
-      padding: 35px 20px 55px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 34px;
+      max-width: 1450px;
+      margin: auto;
+      padding: 50px 40px 80px;
+      overflow: visible;
     }
 
-    .project-card > img {
-      height: 220px;
+    .project-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 390px;
+      overflow: visible;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 24px;
+      color: white;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
     }
-  }
-</style>
+
+    .project-card:hover {
+      z-index: 1000;
+      transform: translateY(-8px);
+      border-color: #60a5fa;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.42);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+    }
+
+    .project-info {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 24px;
+    }
+
+    .project-info h2 {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .project-info p {
+      color: #cbd5e1;
+      line-height: 1.6;
+      font-size: 0.97rem;
+      flex-grow: 1;
+    }
+
+    .project-button {
+      display: inline-block;
+      width: fit-content;
+      margin-top: 22px;
+      padding: 12px 20px;
+      background-color: #2563eb;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .project-button:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      color: #60a5fa;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 0 4px;
+      z-index: 9999;
+    }
+
+    .tooltip-content {
+      visibility: hidden;
+      opacity: 0;
+      width: 270px;
+      background-color: #020617;
+      color: white;
+      border-radius: 16px;
+      padding: 12px;
+      text-align: left;
+      position: absolute;
+      z-index: 999999;
+      bottom: 145%;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.55);
+      border: 1px solid #334155;
+    }
+
+    .tooltip-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .tooltip-content strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .tooltip-text {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+      font-weight: normal;
+    }
+
+    .tooltip:hover .tooltip-content {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 34px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      border-top: 1px solid #334155;
+    }
+
+    @media (max-width: 950px) {
+
+      .projects {
+        padding: 35px 20px 60px;
+      }
+
+      .project-card {
+        width: 100%;
+        max-width: 430px;
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      header h1 {
+        font-size: 2.9rem;
+      }
+
+      header {
+        padding-top: 60px;
+      }
+
+      .project-card img {
+        height: 210px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Fyn Taylor</h1>
+
+    <p>
+      Electrical Engineering Undergraduate Portfolio
+    </p>
+  </header>
+
+  <section class="projects">
+
+    <!-- CAN TRANSCEIVER -->
+
+    <div class="project-card">
+
+      <img src="images/can-bus.png" alt="CAN Transceiver PCB">
+
+      <div class="project-info">
+
+        <h2>CAN Transceiver PCB</h2>
+
+        <p>
+          Designed, prototyped, and manufactured a CAN bus transceiver PCB
+          for use in the
+
+          <span class="tooltip">
+            AUVIC
+
+            <span class="tooltip-content">
+              <img src="images/auvic.png" alt="AUVIC">
+
+              <strong>AUVIC</strong>
+
+              <span class="tooltip-text">
+                AUVic from the University of Victoria builds autonomous
+                underwater vehicles to compete in Robonation’s
+                International Robosub competition.
+              </span>
+            </span>
+          </span>
+
+          <span class="tooltip">
+            AUV
+
+            <span class="tooltip-content">
+              <img src="images/submersible.png" alt="Submersible">
+
+              <strong>2026 AUV</strong>
+
+              <span class="tooltip-text">
+                2026 autonomous underwater vehicle platform.
+              </span>
+            </span>
+          </span>.
+        </p>
+
+        <a class="project-button"
+           href="projects/can-transceiver.html">
+          View Project
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ETHERNET -->
+
+    <div class="project-card">
+
+      <img src="images/ethernet-tether.png"
+           alt="Ethernet Tether System">
+
+      <div class="project-info">
+
+        <h2>Ethernet Tether System</h2>
+
+        <p>
+          Assembled and tested an Ethernet tether communication system
+          for reliable data transfer between the AUV and surface systems.
+        </p>
+
+        <a class="project-button"
+           href="projects/ethernet-tether.html">
+          View Project
+        </a>
+
+      </div>
+    </div>
+
+    <!-- DIGITAL POT -->
+
+    <div class="project-card">
+
+      <img src="images/digipot.png"
+           alt="Digital Potentiometer PCB">
+
+      <div class="project-info">
+
+        <h2>Digital Potentiometer PCB</h2>
+
+        <p>
+          Designed and manufactured an I2C-controlled digital
+          potentiometer PCB for adjustable electronic control systems.
+        </p>
+
+        <a class="project-button"
+           href="projects/digital-potentiometer.html">
+          View Project
+        </a>
+
+      </div>
+    </div>
+
+    <!-- RESEARCH -->
+
+    <div class="project-card">
+
+      <img src="images/sonar.png"
+           alt="Research Assistant Co-op">
+
+      <div class="project-info">
+
+        <h2>Research Assistant Co-op</h2>
+
+        <p>
+          Assisted in conducting tests investigating how freeze-thaw
+          cycling affects the structural integrity of aggregate and
+          subgrade soils.
+        </p>
+
+        <a class="project-button"
+           href="projects/co-op2026.html">
+          View Project
+        </a>
+
+      </div>
+    </div>
+
+    <!-- BOAT -->
+
+    <div class="project-card">
+
+      <img src="images/boat.png"
+           alt="Picnic Table Motor Boat">
+
+      <div class="project-info">
+
+        <h2>Picnic Table Motor Boat</h2>
+
+        <p>
+          Designed and built a floating motorized picnic table that is
+          currently in its second design iteration.
+        </p>
+
+        <a class="project-button"
+           href="projects/picnic-boat.html">
+          View Project
+        </a>
+
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Fyn Taylor | Project Portfolio
+  </footer>
+
+</body>
+
+</html>
