@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Picnic Table Motor Boat | Fyn Taylor</title>
 
   <style>
-
     * {
       margin: 0;
       padding: 0;
@@ -19,9 +19,7 @@
 
     body {
       font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(96, 165, 250, 0.18), transparent 35%),
-        linear-gradient(135deg, #020617, #0f172a 45%, #111827);
+      background-color: #0f172a;
       color: #f8fafc;
       line-height: 1.6;
     }
@@ -34,8 +32,6 @@
 
     .back-link {
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
       margin-bottom: 32px;
       color: #93c5fd;
       text-decoration: none;
@@ -49,52 +45,82 @@
     }
 
     header {
-      padding: 56px 0 64px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
-      margin-bottom: 64px;
+      margin-bottom: 55px;
+    }
+
+    .hero-card,
+    .text,
+    .image-block {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 24px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
     }
 
     .hero-card {
-      background: rgba(15, 23, 42, 0.72);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      border-radius: 28px;
       padding: 42px;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(14px);
-      animation: fadeUp 0.8s ease both;
     }
 
-    header h1 {
-      font-size: clamp(2.5rem, 6vw, 4.6rem);
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.4rem);
       line-height: 1;
       margin-bottom: 24px;
       letter-spacing: -2px;
-      background: linear-gradient(90deg, #ffffff, #93c5fd, #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .project-body {
       max-width: 860px;
-      line-height: 1.5;
       color: #cbd5e1;
       font-size: 1.05rem;
     }
 
-    .project-body p {
-      margin-bottom: 18px;
+    .project-body p,
+    .text p {
+      margin-bottom: 14px;
     }
 
     .project-list {
-      margin-top: 26px;
+      margin-top: 24px;
       margin-left: 4rem;
       line-height: 2;
       color: #e2e8f0;
     }
 
-    .project-list li {
-      padding-left: 10px;
-      margin-bottom: 8px;
+    .section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 42px;
+      align-items: center;
+      margin-bottom: 64px;
+    }
+
+    .section:nth-child(even) {
+      direction: rtl;
+    }
+
+    .section:nth-child(even) .text,
+    .section:nth-child(even) .image-block {
+      direction: ltr;
+    }
+
+    .section.text-only {
+      grid-template-columns: 1fr;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .text {
+      padding: 32px;
+    }
+
+    .text h2 {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .text p {
+      color: #cbd5e1;
     }
 
     .timeline-label {
@@ -107,71 +133,28 @@
       color: #bfdbfe;
       font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: 0.5px;
     }
 
-    .section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 42px;
-      align-items: center;
-      margin-bottom: 86px;
-      animation: fadeUp 0.8s ease both;
-    }
-
-    .section:nth-child(even) {
-      direction: rtl;
-    }
-
-    .section:nth-child(even) .text,
-    .section:nth-child(even) .image-block {
-      direction: ltr;
-    }
-
-    .text {
-      background: rgba(15, 23, 42, 0.55);
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .text:hover {
-      transform: translateY(-6px);
-      border-color: rgba(96, 165, 250, 0.55);
-    }
-
-    .text h2 {
-      font-size: 2rem;
-      margin-bottom: 14px;
-      color: #f8fafc;
-    }
-
-    .text p {
-      color: #cbd5e1;
-      margin-bottom: 14px;
+    .problem-box,
+    .solution-box {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 18px;
     }
 
     .problem-box {
-      margin-top: 22px;
-      padding: 20px;
-      border-radius: 18px;
       background: rgba(127, 29, 29, 0.18);
       border: 1px solid rgba(248, 113, 113, 0.22);
+    }
+
+    .solution-box {
+      background: rgba(20, 83, 45, 0.22);
+      border: 1px solid rgba(74, 222, 128, 0.22);
     }
 
     .problem-box h3 {
       color: #fca5a5;
       margin-bottom: 10px;
-    }
-
-    .solution-box {
-      margin-top: 22px;
-      padding: 20px;
-      border-radius: 18px;
-      background: rgba(20, 83, 45, 0.22);
-      border: 1px solid rgba(74, 222, 128, 0.22);
     }
 
     .solution-box h3 {
@@ -180,54 +163,20 @@
     }
 
     .image-block {
-      position: relative;
-      background: rgba(30, 41, 59, 0.75);
-      border-radius: 24px;
       padding: 14px;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.32);
       overflow: hidden;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .image-block::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(135deg, rgba(96, 165, 250, 0.45), transparent 45%);
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      pointer-events: none;
-    }
-
-    .image-block:hover {
-      transform: scale(1.025);
-      box-shadow: 0 24px 70px rgba(37, 99, 235, 0.22);
-    }
-
-    .image-block:hover::before {
-      opacity: 1;
     }
 
     .image-block img {
-      position: relative;
-      z-index: 1;
       width: 100%;
-      height: 340px;
+      height: 330px;
       object-fit: cover;
       display: block;
       border-radius: 16px;
       background-color: #020617;
-      transition: transform 0.35s ease;
-    }
-
-    .image-block:hover img {
-      transform: scale(1.03);
     }
 
     .caption {
-      position: relative;
-      z-index: 1;
       color: #94a3b8;
       font-size: 0.86rem;
       margin-top: 12px;
@@ -235,27 +184,14 @@
     }
 
     footer {
-      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      border-top: 1px solid #334155;
       padding: 28px 0 10px;
       color: #94a3b8;
       font-size: 0.9rem;
       text-align: center;
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(22px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     @media (max-width: 850px) {
-
       .container {
         padding: 28px 18px;
       }
@@ -278,26 +214,21 @@
         height: 250px;
       }
     }
-
   </style>
 </head>
 
 <body>
-
   <main class="container">
 
     <a class="back-link" href="../index.html">← Back to Portfolio</a>
 
     <header>
-
       <div class="hero-card">
-
         <h1>Picnic Table Motor Boat</h1>
 
         <div class="project-body">
-
           <p>
-           Designed and built a motorized floating picnic table to enjoy a picnic out on the water.
+            Designed and built a motorized floating picnic table to enjoy a picnic out on the water.
           </p>
 
           <p>
@@ -314,212 +245,134 @@
             <li>Identifying limitations</li>
             <li>Designing and building the improved second-generation model</li>
           </ol>
-
         </div>
-
       </div>
-
     </header>
 
-    <!-- VERSION 1 -->
-
     <section class="section">
-
       <div class="text">
-
         <span class="timeline-label">YEAR 1 — VERSION ONE</span>
 
         <h2>First Prototype</h2>
 
         <p>
           The first design focused on creating a floating picnic table with some form of automatic propulsion.
-          The Design 
         </p>
 
         <div class="problem-box">
-
           <h3>Objectives & Constraints</h3>
 
           <p>
-            The objective of the first design was to create a floating picnic table that can be propelled by a motor and carry enough people for a picnic.
+            The objective of the first design was to create a floating picnic table that could be propelled by a motor and carry enough people for a picnic.
           </p>
 
           <p>
-          
-            The primary constraints of the project were budget and time. The total
-            project cost was limited to approximately $100 CAD, and the entire design
-            and construction process had to be completed in a week.
-
+            The primary constraints of the project were budget and time. The total project cost was limited to approximately $100 CAD, and the entire design and construction process had to be completed in a week.
           </p>
-
         </div>
-
       </div>
 
       <div class="image-block">
-
-        <img src="../images/picnicboat-v1.png"
-             alt="First picnic table motor boat">
-
-        <div class="caption">
-          Figure 1 — Version 1
-        </div>
-
+        <img src="../images/picnicboat-v1.png" alt="First picnic table motor boat">
+        <div class="caption">Figure 1 — Version 1</div>
       </div>
-
     </section>
 
-    <!-- PROBLEMS -->
-
-    <section class="section">
-
+    <section class="section text-only">
       <div class="text">
-
         <span class="timeline-label">DESIGN REVIEW</span>
 
         <h2>Problems Identified</h2>
 
-        <p>
-          
-        </p>
-
         <div class="problem-box">
-
           <h3>Issues Found</h3>
 
           <p>
-            The original frame experienced flexing under load, the steering system
-            lacked responsiveness, and the propulsion mounting introduced excessive
-            vibration during operation.
+            The original frame experienced flexing under load, the steering system lacked responsiveness, and the propulsion mounting introduced excessive vibration during operation.
           </p>
 
           <p>
-            Weight distribution also reduced overall stability when passengers
-            shifted positions.
+            Weight distribution also reduced overall stability when passengers shifted positions.
           </p>
-
-        
-
+        </div>
+      </div>
     </section>
 
-    <!-- VERSION 2 -->
-
     <section class="section">
-
       <div class="text">
-
         <span class="timeline-label">YEAR 2 — VERSION TWO</span>
 
         <h2>Redesigned Model</h2>
 
         <p>
-          The second-generation model was redesigned to solve the major issues
-          identified during the operation of the original prototype.
+          The second-generation model was redesigned to solve the major issues identified during the operation of the original prototype.
         </p>
 
         <div class="solution-box">
-
           <h3>Objectives & Constraints</h3>
 
           <p>
-            The primary objective of the redesign was to improve structural
-            rigidity, passenger stability, steering performance, and propulsion
-            reliability without significantly increasing overall weight.
+            The primary objective of the redesign was to improve structural rigidity, passenger stability, steering performance, and propulsion reliability without significantly increasing overall weight.
           </p>
 
           <p>
-            Constraints included reusing components where possible, maintaining
-            portability, and improving durability while preserving passenger space.
+            Constraints included reusing components where possible, maintaining portability, and improving durability while preserving passenger space.
           </p>
-
         </div>
-
       </div>
 
       <div class="image-block">
-
-        <img src="../images/boat.png"
-             alt="Second generation picnic table motor boat">
-
-        <div class="caption">
-          Figure 3 — Redesigned second-generation model
-        </div>
-
+        <img src="../images/boat.png" alt="Second generation picnic table motor boat">
+        <div class="caption">Figure 2 — Redesigned second-generation model</div>
       </div>
-
     </section>
 
-    <!-- IMPROVEMENTS -->
-
-    <section class="section">
-
+    <section class="section text-only">
       <div class="text">
-
         <span class="timeline-label">SECOND GENERATION IMPROVEMENTS</span>
 
         <h2>Problems Solved</h2>
 
         <p>
-          Several major improvements were introduced into the second-generation
-          design to improve reliability and overall handling.
+          Several major improvements were introduced into the second-generation design to improve reliability and overall handling.
         </p>
 
         <div class="solution-box">
-
           <h3>Implemented Improvements</h3>
 
           <p>
-            The redesigned model included a reinforced frame, improved weight
-            distribution, stronger propulsion mounting, and revised steering
-            geometry to reduce vibration and improve maneuverability.
+            The redesigned model included a reinforced frame, improved weight distribution, stronger propulsion mounting, and revised steering geometry to reduce vibration and improve maneuverability.
           </p>
 
           <p>
-            Additional reinforcement also improved passenger stability and
-            reduced structural flex during operation.
+            Additional reinforcement also improved passenger stability and reduced structural flex during operation.
           </p>
-
         </div>
-
-
+      </div>
     </section>
 
-    <!-- FUTURE -->
-
-    <section class="section">
-
+    <section class="section text-only">
       <div class="text">
-
         <span class="timeline-label">FUTURE DEVELOPMENT</span>
 
         <h2>Future Changes</h2>
 
         <p>
-          Future revisions could focus on improving efficiency, reducing overall
-          weight, and refining the propulsion and steering systems.
+          Future revisions could focus on improving efficiency, reducing overall weight, and refining the propulsion and steering systems.
         </p>
 
         <div class="solution-box">
-
           <h3>Potential Improvements</h3>
 
           <p>
-            Possible future changes include lighter materials, improved flotation
-            geometry, integrated electrical systems, cleaner cable routing, and a
-            more refined propulsion mounting system.
+            Possible future changes include lighter materials, improved flotation geometry, integrated electrical systems, cleaner cable routing, and a more refined propulsion mounting system.
           </p>
 
           <p>
-            Additional redesigns may also improve transportability, durability,
-            and long-term operation in varying water conditions.
+            Additional redesigns may also improve transportability, durability, and long-term operation in varying water conditions.
           </p>
-
         </div>
-
       </div>
-
-      
-
     </section>
 
     <footer>
@@ -527,7 +380,5 @@
     </footer>
 
   </main>
-
 </body>
 </html>
-```
