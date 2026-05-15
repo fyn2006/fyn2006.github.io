@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Co-op Application Tracker</title>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: white;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 24px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 40px;
+      padding: 12px 18px;
+      background-color: #1e293b;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      border: 1px solid #334155;
+      transition: 0.2s ease;
+    }
+
+    .back-button:hover {
+      background-color: #2563eb;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      max-width: 800px;
+      color: #cbd5e1;
+      margin-bottom: 50px;
+      font-size: 1.05rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-bottom: 50px;
+    }
+
+    .stat-card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .stat-card h2 {
+      font-size: 2.8rem;
+      color: #60a5fa;
+      margin-bottom: 8px;
+    }
+
+    .stat-card p {
+      color: #cbd5e1;
+    }
+
+    .applications {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .application-card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 24px;
+      transition: transform 0.2s ease;
+    }
+
+    .application-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .status {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .applied {
+      background-color: #1d4ed8;
+    }
+
+    .interview {
+      background-color: #059669;
+    }
+
+    .reviewing {
+      background-color: #b45309;
+    }
+
+    .application-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .application-card p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .features {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 24px;
+      padding: 35px;
+    }
+
+    .features h2 {
+      margin-bottom: 20px;
+    }
+
+    .features ul {
+      padding-left: 24px;
+      color: #cbd5e1;
+    }
+
+    .features li {
+      margin-bottom: 14px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <a class="back-button" href="../index.html">
+      ← Back to Portfolio
+    </a>
+
+    <h1>Co-op Application Tracker</h1>
+
+    <p class="intro">
+      This project is a custom website to help
+      organize and track engineering co-op applications
+    </p>
+
+    <section class="stats">
+
+      <div class="stat-card">
+        <h2>42</h2>
+        <p>Applications Sent</p>
+      </div>
+
+      <div class="stat-card">
+        <h2>11</h2>
+        <p>Interviews / Follow-Ups</p>
+      </div>
+
+      <div class="stat-card">
+        <h2>6</h2>
+        <p>Active Applications</p>
+      </div>
+
+    </section>
+
+    <section class="applications">
+
+      <div class="application-card">
+
+        <span class="status applied">
+          Applied
+        </span>
+
+        <h3>Embedded Systems Co-op</h3>
+
+        <p>
+          Firmware development, UART communication,
+          embedded debugging, and hardware validation.
+        </p>
+
+      </div>
+
+      <div class="application-card">
+
+        <span class="status interview">
+          Interview
+        </span>
+
+        <h3>Electrical Engineering Co-op</h3>
+
+        <p>
+          PCB testing, laboratory support, circuit validation,
+          and technical documentation.
+        </p>
+
+      </div>
+
+      <div class="application-card">
+
+        <span class="status reviewing">
+          Reviewing
+        </span>
+
+        <h3>Hardware Design Assistant</h3>
+
+        <p>
+          PCB layout, prototyping, schematic review,
+          and embedded hardware integration.
+        </p>
+
+      </div>
+
+    </section>
+
+    <section class="features">
+
+      <h2>Project Features</h2>
+
+      <ul>
+        <li>Application organization dashboard</li>
+        <li>Status tracking system for co-op applications</li>
+        <li>Visual statistics and progress monitoring</li>
+        <li>Responsive desktop and mobile layout</li>
+        <li>Engineering-inspired interface styling</li>
+        <li>Built using HTML, CSS, and JavaScript</li>
+      </ul>
+
+    </section>
+
+  </div>
+
+</body>
+
+</html>
