@@ -1,258 +1,719 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Co-op Application Tracker</title>
-
   <style>
-
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
     body {
-      background-color: #0f172a;
-      color: white;
-      line-height: 1.7;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 160, 0.12), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(0, 150, 255, 0.12), transparent 25%),
+        linear-gradient(135deg, #07130f, #0c1f1a 45%, #061018);
+      color: #eefdf7;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 24px;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(83, 255, 177, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(83, 255, 177, 0.08) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
     }
 
-    .back-button {
+    .page {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+      padding: 40px 0 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-link {
       display: inline-block;
-      margin-bottom: 40px;
-      padding: 12px 18px;
-      background-color: #1e293b;
-      border-radius: 12px;
+      margin-bottom: 22px;
+      color: #dffff5;
       text-decoration: none;
-      color: white;
-      border: 1px solid #334155;
-      transition: 0.2s ease;
+      font-weight: 800;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(125, 255, 210, 0.11);
+      border: 1px solid rgba(125, 255, 210, 0.25);
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
-    .back-button:hover {
-      background-color: #2563eb;
+    .back-link:hover {
+      transform: translateY(-2px);
+      background: rgba(125, 255, 210, 0.18);
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+
+    .hero {
+      background: rgba(6, 20, 17, 0.78);
+      border: 1px solid rgba(99, 255, 190, 0.25);
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "0101  CAN  UART  FPGA  I2C  PWM  PCB";
+      position: absolute;
+      right: -35px;
+      bottom: 18px;
+      transform: rotate(-8deg);
+      color: rgba(120, 255, 200, 0.09);
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      white-space: nowrap;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(86, 255, 184, 0.13);
+      color: #7dffd2;
+      border: 1px solid rgba(125, 255, 210, 0.3);
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-size: clamp(2.1rem, 5vw, 4.6rem);
+      line-height: 0.95;
+      margin-bottom: 16px;
     }
 
-    .intro {
-      max-width: 800px;
-      color: #cbd5e1;
-      margin-bottom: 50px;
+    .hero p {
+      color: #bfeadd;
       font-size: 1.05rem;
+      line-height: 1.65;
+      max-width: 680px;
+    }
+
+    .counter-card {
+      min-height: 280px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, rgba(10, 35, 28, 0.95), rgba(6, 16, 25, 0.95));
+      border: 1px solid rgba(113, 255, 204, 0.28);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.36);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .counter-card::before,
+    .counter-card::after {
+      content: "";
+      position: absolute;
+      border: 2px solid rgba(96, 255, 191, 0.22);
+      border-radius: 50%;
+    }
+
+    .counter-card::before {
+      width: 170px;
+      height: 170px;
+      top: -55px;
+      right: -45px;
+    }
+
+    .counter-card::after {
+      width: 100px;
+      height: 100px;
+      bottom: -25px;
+      left: -20px;
+    }
+
+    .counter-number {
+      font-size: 6.4rem;
+      font-weight: 900;
+      color: #72ffc7;
+      text-shadow: 0 0 28px rgba(84, 255, 183, 0.35);
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .counter-label {
+      color: #c6f7e8;
+      font-size: 1.1rem;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .motivator {
+      margin-top: 18px;
+      color: #8fffd6;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 390px 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .panel {
+      background: rgba(7, 22, 18, 0.82);
+      border: 1px solid rgba(119, 255, 203, 0.23);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin-bottom: 18px;
+      color: #f2fffa;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: #b9eede;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 12px 13px;
+      border-radius: 12px;
+      border: 1px solid rgba(125, 255, 210, 0.25);
+      background: rgba(0, 0, 0, 0.22);
+      color: #f2fffa;
+      outline: none;
+      font-size: 0.95rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 84px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #72ffc7;
+      box-shadow: 0 0 0 3px rgba(114, 255, 199, 0.13);
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 800;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .add-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #5dffb7, #3ac8ff);
+      color: #06130f;
+      font-size: 1rem;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .toolbar select,
+    .toolbar input {
+      margin-bottom: 0;
+      flex: 1;
+      min-width: 180px;
     }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-      margin-bottom: 50px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
     }
 
-    .stat-card {
-      background-color: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 20px;
-      padding: 28px;
+    .stat {
+      border: 1px solid rgba(125, 255, 210, 0.2);
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 18px;
+      padding: 16px;
       text-align: center;
     }
 
-    .stat-card h2 {
-      font-size: 2.8rem;
-      color: #60a5fa;
-      margin-bottom: 8px;
+    .stat strong {
+      display: block;
+      color: #72ffc7;
+      font-size: 1.9rem;
     }
 
-    .stat-card p {
-      color: #cbd5e1;
+    .stat span {
+      color: #bfeadd;
+      font-size: 0.86rem;
     }
 
     .applications {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-bottom: 60px;
+      gap: 14px;
     }
 
     .application-card {
-      background-color: #1e293b;
-      border: 1px solid #334155;
+      border: 1px solid rgba(125, 255, 210, 0.22);
+      background: rgba(0, 0, 0, 0.24);
       border-radius: 20px;
-      padding: 24px;
-      transition: transform 0.2s ease;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .application-card:hover {
-      transform: translateY(-6px);
+    .application-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: #72ffc7;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .company {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .role {
+      color: #bfeadd;
+      margin-top: 4px;
     }
 
     .status {
-      display: inline-block;
-      padding: 8px 14px;
+      white-space: nowrap;
+      padding: 7px 10px;
       border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      margin-bottom: 16px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      height: fit-content;
     }
 
-    .applied {
-      background-color: #1d4ed8;
-    }
+    .Applied { background: rgba(80, 175, 255, 0.18); color: #8ed4ff; }
+    .Interview { background: rgba(255, 215, 105, 0.18); color: #ffe08b; }
+    .Offer { background: rgba(93, 255, 183, 0.18); color: #72ffc7; }
+    .Rejected { background: rgba(255, 110, 110, 0.17); color: #ff9b9b; }
 
-    .interview {
-      background-color: #059669;
-    }
-
-    .reviewing {
-      background-color: #b45309;
-    }
-
-    .application-card h3 {
+    .meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: #9fdac9;
+      font-size: 0.9rem;
       margin-bottom: 10px;
     }
 
-    .application-card p {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-    }
-
-    .features {
-      background-color: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 24px;
-      padding: 35px;
-    }
-
-    .features h2 {
-      margin-bottom: 20px;
-    }
-
-    .features ul {
-      padding-left: 24px;
-      color: #cbd5e1;
-    }
-
-    .features li {
+    .notes {
+      color: #d8fff2;
+      line-height: 1.5;
       margin-bottom: 14px;
     }
 
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .small-btn {
+      background: rgba(125, 255, 210, 0.12);
+      color: #dffff5;
+      border: 1px solid rgba(125, 255, 210, 0.25);
+      padding: 9px 12px;
+      font-size: 0.85rem;
+    }
+
+    .delete-btn {
+      background: rgba(255, 110, 110, 0.12);
+      color: #ffb7b7;
+      border-color: rgba(255, 110, 110, 0.3);
+    }
+
+    .empty {
+      text-align: center;
+      color: #bfeadd;
+      padding: 40px 20px;
+      border: 1px dashed rgba(125, 255, 210, 0.25);
+      border-radius: 18px;
+    }
+
+    .circuit-strip {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .chip {
+      min-height: 105px;
+      border-radius: 18px;
+      border: 1px solid rgba(125, 255, 210, 0.22);
+      background:
+        linear-gradient(90deg, transparent 48%, rgba(114,255,199,0.18) 49%, rgba(114,255,199,0.18) 51%, transparent 52%),
+        rgba(0, 0, 0, 0.23);
+      padding: 18px;
+      display: flex;
+      align-items: end;
+      font-weight: 900;
+      color: #91ffd9;
+    }
+
+    @media (max-width: 920px) {
+      header,
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats,
+      .circuit-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero,
+      .counter-card,
+      .panel {
+        padding: 20px;
+      }
+
+      .counter-number {
+        font-size: 4.8rem;
+      }
+
+      .stats,
+      .circuit-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .card-top {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
-
 <body>
+  <main class="page">
+    <a class="back-link" href="../index.html">← Back to Portfolio</a>
 
-  <div class="container">
-
-    <a class="back-button" href="../index.html">
-      ← Back to Portfolio
-    </a>
-
-    <h1>Co-op Application Tracker</h1>
-
-    <p class="intro">
-      This project is a custom website to help
-      organize and track engineering co-op applications
-    </p>
-
-    <section class="stats">
-
-      <div class="stat-card">
-        <h2>42</h2>
-        <p>Applications Sent</p>
-      </div>
-
-      <div class="stat-card">
-        <h2>11</h2>
-        <p>Interviews / Follow-Ups</p>
-      </div>
-
-      <div class="stat-card">
-        <h2>6</h2>
-        <p>Active Applications</p>
-      </div>
-
-    </section>
-
-    <section class="applications">
-
-      <div class="application-card">
-
-        <span class="status applied">
-          Applied
-        </span>
-
-        <h3>Embedded Systems Co-op</h3>
-
+    <header>
+      <section class="hero">
+        <span class="tag">Engineering Co-op Tracker</span>
+        <h1>Co-op Application Tracker</h1>
         <p>
-          Firmware development, UART communication,
-          embedded debugging, and hardware validation.
+          A portfolio demo of a dashboard built to organize engineering co-op applications,
+          track application status, and show progress during the job search. This version
+          uses sample placeholder data only.
         </p>
+      </section>
 
-      </div>
+      <section class="counter-card">
+        <div class="counter-number" id="totalCounter">0</div>
+        <div class="counter-label">Demo Applications</div>
+        <div class="motivator" id="motivator">Route another trace. Send another application.</div>
+      </section>
+    </header>
 
-      <div class="application-card">
-
-        <span class="status interview">
-          Interview
-        </span>
-
-        <h3>Electrical Engineering Co-op</h3>
-
-        <p>
-          PCB testing, laboratory support, circuit validation,
-          and technical documentation.
+    <section class="main-grid">
+      <aside class="panel">
+        <h2>Try the Demo</h2>
+        <p style="color: #bfeadd; line-height: 1.55; margin-bottom: 18px;">
+          Add, update, or delete sample applications to test the interface. Changes are not saved
+          and no personal application data is stored.
         </p>
+        <form id="applicationForm">
+          <label for="company">Company</label>
+          <input id="company" type="text" placeholder="Example: Engineering Company" required />
 
-      </div>
+          <label for="role">Co-op / Role</label>
+          <input id="role" type="text" placeholder="Example: Firmware Engineering Co-op" required />
 
-      <div class="application-card">
+          <label for="date">Date Applied</label>
+          <input id="date" type="date" required />
 
-        <span class="status reviewing">
-          Reviewing
-        </span>
+          <label for="status">Status</label>
+          <select id="status">
+            <option>Applied</option>
+            <option>Interview</option>
+            <option>Offer</option>
+            <option>Rejected</option>
+          </select>
 
-        <h3>Hardware Design Assistant</h3>
+          <label for="notes">Notes</label>
+          <textarea id="notes" placeholder="Resume version, follow-up date, interview notes, etc."></textarea>
 
-        <p>
-          PCB layout, prototyping, schematic review,
-          and embedded hardware integration.
-        </p>
+          <button class="add-btn" type="submit">Add Demo Application</button>
+        </form>
 
-      </div>
+        <div class="circuit-strip">
+          <div class="chip">PCB Layout</div>
+          <div class="chip">Firmware</div>
+          <div class="chip">Debugging</div>
+        </div>
+      </aside>
 
+      <section class="panel">
+        <h2>Application Dashboard</h2>
+
+        <div class="stats">
+          <div class="stat"><strong id="appliedCount">0</strong><span>Applied</span></div>
+          <div class="stat"><strong id="interviewCount">0</strong><span>Interview</span></div>
+          <div class="stat"><strong id="offerCount">0</strong><span>Offer</span></div>
+          <div class="stat"><strong id="rejectedCount">0</strong><span>Rejected</span></div>
+        </div>
+
+        <div class="toolbar">
+          <input id="searchInput" type="text" placeholder="Search company or role..." />
+          <select id="filterStatus">
+            <option value="All">All Statuses</option>
+            <option value="Applied">Applied</option>
+            <option value="Interview">Interview</option>
+            <option value="Offer">Offer</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+
+        <div class="applications" id="applicationsList"></div>
+      </section>
     </section>
+  </main>
 
-    <section class="features">
+  <script>
+    const form = document.getElementById("applicationForm");
+    const companyInput = document.getElementById("company");
+    const roleInput = document.getElementById("role");
+    const dateInput = document.getElementById("date");
+    const statusInput = document.getElementById("status");
+    const notesInput = document.getElementById("notes");
+    const applicationsList = document.getElementById("applicationsList");
+    const searchInput = document.getElementById("searchInput");
+    const filterStatus = document.getElementById("filterStatus");
 
-      <h2>Project Features</h2>
+    const totalCounter = document.getElementById("totalCounter");
+    const appliedCount = document.getElementById("appliedCount");
+    const interviewCount = document.getElementById("interviewCount");
+    const offerCount = document.getElementById("offerCount");
+    const rejectedCount = document.getElementById("rejectedCount");
+    const motivator = document.getElementById("motivator");
 
-      <ul>
-        <li>Application organization dashboard</li>
-        <li>Status tracking system for co-op applications</li>
-        <li>Visual statistics and progress monitoring</li>
-        <li>Responsive desktop and mobile layout</li>
-        <li>Engineering-inspired interface styling</li>
-        <li>Built using HTML, CSS, and JavaScript</li>
-      </ul>
+    let applications = [
+      {
+        id: "sample-1",
+        company: "Embedded Systems Company",
+        role: "Firmware Engineering Co-op",
+        date: "2026-01-12",
+        status: "Interview",
+        notes: "Embedded development, debugging, and communication systems."
+      },
+      {
+        id: "sample-2",
+        company: "Hardware Design Group",
+        role: "PCB Design Assistant",
+        date: "2026-01-18",
+        status: "Applied",
+        notes: "PCB layout, schematic review, and prototyping."
+      },
+      {
+        id: "sample-3",
+        company: "Robotics Company",
+        role: "Electrical Engineering Co-op",
+        date: "2026-01-20",
+        status: "Offer",
+        notes: "Testing, integration, and embedded systems support."
+      },
+      {
+        id: "sample-4",
+        company: "Clean Energy Lab",
+        role: "Electrical Test Co-op",
+        date: "2026-01-25",
+        status: "Rejected",
+        notes: "Lab testing, documentation, and circuit validation."
+      }
+    ];
 
-    </section>
+    dateInput.valueAsDate = new Date();
 
-  </div>
+    const messages = [
+      "Route another trace. Send another application.",
+      "Every application is another commit toward your future.",
+      "Debug the process. Improve the next revision.",
+      "Firmware mindset: test, iterate, improve.",
+      "PCB mindset: clean layout, strong connections, steady progress."
+    ];
 
+    function createId() {
+      if (window.crypto && crypto.randomUUID) {
+        return crypto.randomUUID();
+      }
+
+      return `demo-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    }
+
+    function updateStats() {
+      const total = applications.length;
+      totalCounter.textContent = total;
+      appliedCount.textContent = applications.filter(app => app.status === "Applied").length;
+      interviewCount.textContent = applications.filter(app => app.status === "Interview").length;
+      offerCount.textContent = applications.filter(app => app.status === "Offer").length;
+      rejectedCount.textContent = applications.filter(app => app.status === "Rejected").length;
+      motivator.textContent = messages[total % messages.length];
+    }
+
+    function renderApplications() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedStatus = filterStatus.value;
+
+      const filteredApplications = applications.filter(app => {
+        const matchesSearch =
+          app.company.toLowerCase().includes(searchTerm) ||
+          app.role.toLowerCase().includes(searchTerm);
+
+        const matchesStatus = selectedStatus === "All" || app.status === selectedStatus;
+
+        return matchesSearch && matchesStatus;
+      });
+
+      applicationsList.innerHTML = "";
+
+      if (filteredApplications.length === 0) {
+        applicationsList.innerHTML = `
+          <div class="empty">
+            No matching demo applications found. Try changing the search or filter settings.
+          </div>
+        `;
+        updateStats();
+        return;
+      }
+
+      filteredApplications
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .forEach(app => {
+          const card = document.createElement("div");
+          card.className = "application-card";
+
+          card.innerHTML = `
+            <div class="card-top">
+              <div>
+                <div class="company">${app.company}</div>
+                <div class="role">${app.role}</div>
+              </div>
+              <span class="status ${app.status}">${app.status}</span>
+            </div>
+            <div class="meta">
+              <span>Applied: ${app.date}</span>
+            </div>
+            <p class="notes">${app.notes || "No notes added."}</p>
+            <div class="card-actions">
+              <button class="small-btn" onclick="changeStatus('${app.id}', 'Applied')">Applied</button>
+              <button class="small-btn" onclick="changeStatus('${app.id}', 'Interview')">Interview</button>
+              <button class="small-btn" onclick="changeStatus('${app.id}', 'Offer')">Offer</button>
+              <button class="small-btn" onclick="changeStatus('${app.id}', 'Rejected')">Rejected</button>
+              <button class="small-btn delete-btn" onclick="deleteApplication('${app.id}')">Delete</button>
+            </div>
+          `;
+
+          applicationsList.appendChild(card);
+        });
+
+      updateStats();
+    }
+
+    function changeStatus(id, newStatus) {
+      applications = applications.map(app => {
+        if (app.id === id) {
+          return { ...app, status: newStatus };
+        }
+        return app;
+      });
+
+      renderApplications();
+    }
+
+    function deleteApplication(id) {
+      applications = applications.filter(app => app.id !== id);
+      renderApplications();
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const newApplication = {
+        id: createId(),
+        company: companyInput.value.trim(),
+        role: roleInput.value.trim(),
+        date: dateInput.value,
+        status: statusInput.value,
+        notes: notesInput.value.trim()
+      };
+
+      applications.push(newApplication);
+      renderApplications();
+      form.reset();
+      dateInput.valueAsDate = new Date();
+    });
+
+    searchInput.addEventListener("input", renderApplications);
+    filterStatus.addEventListener("change", renderApplications);
+
+    renderApplications();
+  </script>
 </body>
-
 </html>
